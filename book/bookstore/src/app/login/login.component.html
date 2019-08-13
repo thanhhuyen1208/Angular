@@ -1,0 +1,39 @@
+<div class="container-loginForm" style="background-image: url('assets/images/bg-02.jpg');">
+    <div class="wrap-loginForm p-l-55 p-r-55 p-t-80 p-b-30">
+        <form  [formGroup]= "loginForm" class="loginForm-form validate-form" (ngSubmit)="onSubmit()" >
+            <span class="loginForm-form-title p-b-37">
+                Login
+            </span>
+
+            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter Email">
+                <input  class="input100" type="text" name="Email" placeholder="Email" formControlName="email" required>
+                <span class="focus-input100"></span>
+            
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
+                    <div *ngIf="email.errors.required">
+                        Email is required.
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter Password">
+                <input class="input100" type="password" name="Password" placeholder="Password" formControlName="password" required>
+                <span class="focus-input100"></span>
+                
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error">
+                   <div *ngIf="password.errors.required">
+                        Password is required
+                   </div>
+                </div>
+                
+            </div>
+
+            <div class="container-loginForm-form-btn">
+                <button class="loginForm-form-btn"  (click)="onSubmit()" type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
