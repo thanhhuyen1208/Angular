@@ -5,6 +5,7 @@ import { Book } from './book';
 import { ResponseBook } from './responseBook'
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { MessageService } from './message.service';
 
 
 
@@ -13,7 +14,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 })
 export class BookService {
 
-  private booksUrl = 'https://books-api-456.herokuapp.com/api/books';   //URL to web api
+  private booksUrl = 'https://books-234.herokuapp.com/api/books';   //URL to web api
 
 
   httpOptions = {
@@ -22,16 +23,19 @@ export class BookService {
       'Authorization': 'Bearer '
     })
   };
+ 
 
   constructor(
     private http: HttpClient,
+    private messageService: MessageService
 
   ) { }
 
   private handleError<T> (operation ='operation', result?:T){
     return (error: any): Observable<T> => {
 
-      // console.error(error);
+       console.error(error);
+       this.log(`${operation} failed: ${error.message}`);
 
       return of(result as T);
     }
@@ -42,6 +46,18 @@ export class BookService {
     return this.http.get<ResponseBook>(this.booksUrl).pipe(
       catchError(this.handleError<ResponseBook>('getBooks'))
     );
+  }
+
+  /** GET book by id from server. Will 404 if id is not found */
+  getBook(id: number): Observable<Book> {
+    const url = `${this.booksUrl}/${id}`;
+    return this.http.get<Book>(url).pipe(
+      tap(_ => this.log(`fetched book id=${id}`)),
+      catchError(this.handleError<Book>(`getBook id=${id}`))
+    );
+  }
+  private log(message: string): void {
+    this.messageService.add(`BookService: ${message}`);
   }
 
   /** GET book by id. Return 'undefined' when id not found */
@@ -67,11 +83,12 @@ export class BookService {
   }
 
   /** DELETE: delete book from the server */
-  deleteBook(books: Book | number): Observable<Book>{
-    const id = typeof books === 'number' ? books: books.id;
+  deleteBook(book: Book | number): Observable<Book>{
+    const id = typeof book === 'number' ? book: book.id;
     const url = `${this.booksUrl}/${id}`;
 
     return this.http.delete<Book>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`delete book id=${id}`)),
       catchError(this.handleError<Book>('deleteBook'))
     );
   }

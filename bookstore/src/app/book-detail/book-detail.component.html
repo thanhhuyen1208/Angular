@@ -1,1 +1,13 @@
-<p>book-detail works!</p>
+<div *ngIf="book">
+    <h2>BOOK </h2>
+    <div><span>Title: </span>{{book.title}}</div>
+    <div>
+      <label>Author:
+        {{book.author}}
+      </label>
+    </div>
+
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+  </div>
+  
