@@ -21,6 +21,7 @@ import { httpInterceptorProviders } from './http-interceptors/index';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { ConfigComponent } from './config/config.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ConfigComponent } from './config/config.component';
     BookDetailComponent,
     BooksComponent,
     HeaderComponent,
-    ConfigComponent
+    ConfigComponent,
+    MessagesComponent
 
   ],
 

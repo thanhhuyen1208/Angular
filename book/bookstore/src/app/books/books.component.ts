@@ -25,7 +25,7 @@ export class BooksComponent implements OnInit {
   logout() {
     
       localStorage.removeItem('currentUser');
-      this.router.navigate(['/']);
+      this.router.navigate(['/books']);
   }
 
   getBooks(): void {
