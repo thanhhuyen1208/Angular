@@ -8,6 +8,9 @@
     </div>
 
     <button (click)="goBack()">go back</button>
-    <button (click)="save()">save</button>
+    
+    <button routerLink="/books/edit/{{book.id}}">
+      Edit
+    </button>
   </div>
   

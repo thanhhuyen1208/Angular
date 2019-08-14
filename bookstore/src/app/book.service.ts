@@ -75,9 +75,9 @@ export class BookService {
   }
 
   /** POST: add a new hero to the server */
-  addBook(title : string): Observable<Book>{
+  addBook(title : string, author: string): Observable<Book>{
     //  return true
-    return this.http.post<Book>(this.booksUrl, {title}, this.httpOptions).pipe(
+    return this.http.post<Book>(this.booksUrl, {title, author}, this.httpOptions).pipe(
       catchError(this.handleError<Book>('addBook'))
     );
   }
@@ -90,6 +90,17 @@ export class BookService {
     return this.http.delete<Book>(url, this.httpOptions).pipe(
       tap(_ => this.log(`delete book id=${id}`)),
       catchError(this.handleError<Book>('deleteBook'))
+    );
+  }
+
+  /** PUT: update book on the server */
+  updateBook(book: Book | number): Observable<any>{
+    const id = typeof book === 'number' ? book: book.id;
+    const url = `${this.booksUrl}/${id}`;
+
+    return this.http.put<Book>(url, book , this.httpOptions).pipe(
+      tap(_ => this.log(`update book id=${id}`)),
+      catchError(this.handleError<any>('updateBook'))
     );
   }
 

@@ -32,10 +32,11 @@ export class BooksComponent implements OnInit {
     this.bookService.getBooks().subscribe(responseBooks => this.books=responseBooks.books);
   }
 
-  add(title: string): void {
+  add(title: string, author:string): void {
     title = title.trim();
+
     if (!title) { return; }
-    this.bookService.addBook( title )
+    this.bookService.addBook( title, author )
     .subscribe(book => {
       this.books.push(book);
     });

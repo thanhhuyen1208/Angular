@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BookEditComponent } from './book-edit/book-edit.component'
 import { BooksComponent } from './books/books.component';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -32,8 +33,8 @@ import { MessagesComponent } from './messages/messages.component';
     BooksComponent,
     HeaderComponent,
     ConfigComponent,
-    MessagesComponent
-
+    MessagesComponent,
+    BookEditComponent
   ],
 
   imports: [
