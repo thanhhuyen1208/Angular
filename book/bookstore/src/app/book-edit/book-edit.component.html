@@ -1,0 +1,16 @@
+<div *ngIf="book">
+    <h2>EDIT BOOK</h2>
+    <div>
+        <label>Title: 
+             <input [(ngModel)]="book.title" placeholder="title"/>
+        </label>
+    </div>
+    <div>
+      <label>Author:
+        <input [(ngModel)]="book.author" placeholder="author"/>
+      </label>
+    </div>
+    <button (click)="goBack()">Go Back</button>
+    <button (click)="save()">Save</button>
+  </div>
+  

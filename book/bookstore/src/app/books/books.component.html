@@ -12,12 +12,19 @@
   <label>Title Of Books
     <input #bookTitle />
   </label>
+</div>
 
+<div>
+    <label>Author Of Books
+        <input #bookAuthor />
+    </label>
+</div>
+ 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(bookTitle.value); bookTitle.value=''">
+  <button (click)="add(bookTitle.value, bookAuthor.value); bookTitle.value=''; bookAuthor.value='' ">
     Add
   </button> 
-</div>
+
 
 
 <ul class="books">
@@ -25,7 +32,9 @@
     <a routerLink="/books/{{book.id}}">
       <span class="badge">{{book.id}}</span> {{book.title}}
     </a>
+ 
+
     <button class="delete" title="delete book"
-      (click)="delete(book)">x</button>
+      (click)="delete(book)">x</button>  
   </li>
 </ul>
