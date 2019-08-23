@@ -13,6 +13,18 @@ import { AuthService } from '../auth.service';
 })
 export class BooksComponent implements OnInit {
 
+  today = new Date();
+
+  slides = [
+    {img: "assets/images/blog-slide1.jpg"},
+    {img: "assets/images/blog-slide2.jpg"},
+    {img: "assets/images/blog-slide3.jpg"},
+    {img: "assets/images/blog-slide4.jpg"},
+    {img: "assets/images/blog-slide5.jpg"},
+    {img: "assets/images/blog-slide6.jpg"}
+  ];
+  slideConfig = {"slidesToShow": 3, "slidesToScroll": 4, "autoplay":true, "autoplay-speed": 100};
+  
   books: Book[];
   responseBooks: ResponseBook;
 
@@ -40,7 +52,7 @@ export class BooksComponent implements OnInit {
     .subscribe(book => {
       this.books.push(book);
     });
-}
+  }
 
   delete(book: Book): void{
     this.books = this.books.filter(b => b !== book);

@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book.service';
 import { Location } from '@angular/common';
 import { Book } from '../book';
+import { CommentService } from '../comment.service';
+import { Comment } from '../comment';
+//import { Comment } from '../comment'
 
 @Component({
   selector: 'app-book-detail',
@@ -11,12 +14,28 @@ import { Book } from '../book';
 })
 export class BookDetailComponent implements OnInit {
 
-  @Input() book: Book;
+  today = new Date();
 
+  slides = [
+    {img: "assets/images/blog-slide1.jpg"},
+    {img: "assets/images/blog-slide2.jpg"},
+    {img: "assets/images/blog-slide3.jpg"},
+    {img: "assets/images/blog-slide4.jpg"},
+    {img: "assets/images/blog-slide5.jpg"},
+    {img: "assets/images/blog-slide6.jpg"}
+  ];
+  slideConfig = {"slidesToShow": 3, "slidesToScroll": 4, "autoplay":true, "autoplay-speed": 100};
+  
+
+  comments: Comment[]
+  
   constructor(
     private router: ActivatedRoute,
     private bookService: BookService,
-    private location: Location
+    private commentService: CommentService,
+    private location: Location,
+    private book: Book,
+    private comment: Comment
   ) { }
 
   ngOnInit() {
@@ -26,9 +45,22 @@ export class BookDetailComponent implements OnInit {
   getBook(): void {
     const id = +this.router.snapshot.paramMap.get('id');
     this.bookService.getBook(id).subscribe(book => this.book = book);
+    this.commentService.getComments(id).subscribe(comments => this.comments = comments)
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  add(message: string, bookId: number): void {
+     bookId = +this.router.snapshot.paramMap.get('id');
+    this.commentService.addComment(message, bookId).subscribe(comment => {
+      this.comments.push(comment)
+    });
+  }
+
+  delete(comment: Comment): void{
+    this.comments = this.comments.filter(c => c!==comment);
+    this.commentService.deleteComment(comment).subscribe();
   }
 }

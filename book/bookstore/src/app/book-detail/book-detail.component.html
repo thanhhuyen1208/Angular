@@ -1,16 +1,431 @@
-<div *ngIf="book">
-    <h2>BOOK </h2>
-    <div><span>Title: </span>{{book.title}}</div>
-    <div>
-      <label>Author:
-        {{book.author}}
-      </label>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+  <!--================Header Menu Area =================-->
+  <header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container box_1620">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand logo_h" href="index.html"><img src="../favicon.ico" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav justify-content-center">
+              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+              <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">Pages</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="blog-details.html">Blog Details</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-social">
+              <li><a href="#"><i class="ti ti-facebook"></i></a></li>
+              <li><a href="#"><i class="ti ti-twitter-alt"></i></a></li>
+              <li><a href="#"><i class="ti ti-instagram"></i></a></li>
+              <li><a href="#"><i class="ti ti-skype"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
+  </header>
+  <!--================Header Menu Area =================-->
+  <main class="site-main"></main>
+  <!--================ Hero sm Banner start =================-->      
+  <section class="mb-30px">
+    <div class="container">
+      <div class="hero-banner">
+        <div class="hero-banner__content">
+          <h3>Book & Amazing Thing</h3>
+          <h1>Interesting Book in your hand</h1>
+          <h4>{{today | date:'dd-MM-yyyy'}}</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->    
+  <section>
+    <div class="container">
 
-    <button (click)="goBack()">go back</button>
-    
-    <button routerLink="/books/edit/{{book.id}}">
-      Edit
-    </button>
-  </div>
+      <div class="owl-carousel owl-theme blog-slider">
+        <a class="blog__slide__label" href="#">Hot Books </a>
+        <div class="card blog__slide text-center">
+          <ngx-slick-carousel class="carousel" [config]="slideConfig">
+
+            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+              <img src="{{ slide.img }}" alt="" width="100%" height="500px">
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </section>
+
   
+
+  <!--================ Start Blog Post Area =================-->
+  <section class="blog-post-area section-margin">
+      <div *ngIf="book">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          
+            <div class="main_blog_details">
+                <img class="img-fluid" src="assets/images/blog4.png" alt="">
+                <a href="#"><h4>{{book.title}}<br /></h4></a>
+                <div class="user_details">
+                  <div class="float-left">
+                    <a href="#">Lifestyle</a>
+                    <a href="#">Gadget</a>
+                  </div>
+                  <div class="float-right mt-sm-0 mt-3">
+                    <div class="media">
+                      <div class="media-body">
+                        <h5>{{book.author}}</h5>
+                        <p>{{book.createdAt | date:'dd-MM-yyyy h:mma'}}</p>
+                      </div>
+                      <div class="d-flex">
+                        <img width="42" height="42" src="assets/images/user-img.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
+                <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.</p>
+           <blockquote class="blockquote">
+             <p class="mb-0">MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.</p>
+           </blockquote>
+           <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
+           <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
+               <div class="news_d_footer flex-column flex-sm-row">
+                 <span class="align-middle mr-2"><i class="ti ti-heart" style="color: red"></i></span>Become the first person to like thiss
+                 <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><span class="align-middle mr-2"><i class="ti ti-themify-favicon"></i></span>Comments</a>
+                 
+               </div>
+              </div>
+          
+
+          <div class="navigation-area">
+                  <div class="row">
+                      <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                          <div class="thumb">
+                              <a (click)="goBack()">
+                                <img class="img-fluid" src="assets/images/prev.png" alt="" style="border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;">
+                              </a>
+                          </div>
+                          <div class="arrow">
+                              <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                          </div>
+                          <div class="detials">
+                              <h4>Go Back</h4>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                          <div class="detials">
+                              
+                              <h4>Edit</h4>
+                          </div>
+                          <div class="arrow">
+                              <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                          </div>
+                          <div class="thumb">
+                              <a routerLink="/books/edit/{{book.id}}"><img class="img-fluid" src="assets/images/next.png" alt="" 
+                                style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%"></a>
+                          </div>										
+                      </div>									
+                  </div>
+                </div>
+                <div class="comments-area">
+                  
+                    <h4>Comments</h4>
+                    <ul class="comments">
+                        <li *ngFor="let comment of comments">
+                    <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <div class="thumb">
+                                    <img src="assets/images/c4.jpg" alt="">
+                                </div>
+                                <div class="desc">
+                                    
+                                    <p class="date">{{comment.createAt | date:'dd-MM-yyyy h:mma'}} </p>
+                                    <p class="comment">
+                                        {{comment.message}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="reply-btn">
+                                <a (click)="delete(comment)" class="btn-reply text-uppercase">delete</a> 
+                            </div>
+                        </div>
+                    </div>
+                    </li>	
+                    </ul>
+ 
+                </div>
+                <div class="comment-form">
+                    <h4>Leave a Reply</h4>
+                    <form>
+                        <div class="form-group form-inline">
+                          <div class="form-group col-lg-6 col-md-6 name">
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                          </div>
+                          <div class="form-group col-lg-6 col-md-6 email">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                          </div>										
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                        </div>
+                        <div class="form-group">
+                            <textarea #commentMessage class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                        </div>
+                        <a  class="button submit_btn" (click)="add(commentMessage.value); commentMessage.value='' " style="color: orange">
+                          Post Comment
+                        </a>	
+                    </form>
+                </div>
+        </div>
+
+        <!-- Start Blog Post Siddebar -->
+        <div class="col-lg-4 sidebar-widgets">
+            <div class="widget-wrap">
+              <div class="single-sidebar-widget newsletter-widget">
+                <h4 class="single-sidebar-widget__title">Newsletter</h4>
+                <div class="form-group mt-30">
+                  <div class="col-autos">
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'Enter email'">
+                  </div>
+                </div>
+                <button class="bbtns d-block mt-20 w-100">Subcribe</button>
+              </div>
+
+
+              <div class="single-sidebar-widget post-category-widget">
+                <h4 class="single-sidebar-widget__title">Catgory</h4>
+                <ul class="cat-list mt-20">
+                  <li>
+                    <a href="#" class="d-flex justify-content-between">
+                      <p>Text Book</p>
+                      <p>(03)</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="d-flex justify-content-between">
+                      <p>Magazine</p>
+                      <p>(09)</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="d-flex justify-content-between">
+                      <p>Autobiography</p>
+                      <p>(12)</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="d-flex justify-content-between">
+                      <p>Journals</p>
+                      <p>(02)</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="d-flex justify-content-between">
+                      <p>Thriller</p>
+                      <p>(10)</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="single-sidebar-widget popular-post-widget">
+                <h4 class="single-sidebar-widget__title">Popular Post</h4>
+                <div class="popular-post-list">
+                  <div class="single-post-list">
+                    <div class="thumb">
+                      <img class="card-img rounded-0" src="img/blog/thumb/thumb1.png" alt="">
+                      <ul class="thumb-info">
+                        <li><a href="#">Adam Colinge</a></li>
+                        <li><a href="#">Dec 15</a></li>
+                      </ul>
+                    </div>
+                    <div class="details mt-20">
+                      <a href="blog-single.html">
+                        <h6>Accused of assaulting flight attendant miktake alaways</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="single-post-list">
+                    <div class="thumb">
+                      <img class="card-img rounded-0" src="img/blog/thumb/thumb2.png" alt="">
+                      <ul class="thumb-info">
+                        <li><a href="#">Adam Colinge</a></li>
+                        <li><a href="#">Dec 15</a></li>
+                      </ul>
+                    </div>
+                    <div class="details mt-20">
+                      <a href="blog-single.html">
+                        <h6>Tennessee outback steakhouse the
+                          worker diagnosed</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="single-post-list">
+                    <div class="thumb">
+                      <img class="card-img rounded-0" src="img/blog/thumb/thumb3.png" alt="">
+                      <ul class="thumb-info">
+                        <li><a href="#">Adam Colinge</a></li>
+                        <li><a href="#">Dec 15</a></li>
+                      </ul>
+                    </div>
+                    <div class="details mt-20">
+                      <a href="blog-single.html">
+                        <h6>Tennessee outback steakhouse the
+                          worker diagnosed</h6>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                <div class="single-sidebar-widget tag_cloud_widget">
+                  <h4 class="single-sidebar-widget__title">Popular Post</h4>
+                  <ul class="list">
+                    <li>
+                        <a href="#">project</a>
+                    </li>
+                    <li>
+                        <a href="#">love</a>
+                    </li>
+                    <li>
+                        <a href="#">technology</a>
+                    </li>
+                    <li>
+                        <a href="#">travel</a>
+                    </li>
+                    <li>
+                        <a href="#">software</a>
+                    </li>
+                    <li>
+                        <a href="#">life style</a>
+                    </li>
+                    <li>
+                        <a href="#">design</a>
+                    </li>
+                    <li>
+                        <a href="#">illustration</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        <!-- End Blog Post Siddebar -->
+      </div>
+  </section>
+  <!--================ End Blog Post Area =================-->
+
+  <!--================ Start Footer Area =================-->
+  <footer class="footer-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3  col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h6>About Us</h6>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+              magna aliqua.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4  col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h6>Newsletter</h6>
+            <p>Stay update with our latest</p>
+            <div class="" id="mc_embed_signup">
+
+              <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                method="get" class="form-inline">
+
+                <div class="d-flex flex-row">
+
+                  <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                    required="" type="email">
+
+
+                  <button class="click-btn btn btn-default"><span class="lnr lnr-arrow-right"></span></button>
+                  <div style="position: absolute; left: -5000px;">
+                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                  </div>
+
+                  <!-- <div class="col-lg-4 col-md-4">
+                        <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+                      </div>  -->
+                </div>
+                <div class="info"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3  col-md-6 col-sm-6">
+          <div class="single-footer-widget mail-chimp">
+            <h6 class="mb-20">Instragram Feed</h6>
+            <ul class="instafeed d-flex flex-wrap">
+              <li><img src="img/instagram/i1.jpg" alt=""></li>
+              <li><img src="img/instagram/i2.jpg" alt=""></li>
+              <li><img src="img/instagram/i3.jpg" alt=""></li>
+              <li><img src="img/instagram/i4.jpg" alt=""></li>
+              <li><img src="img/instagram/i5.jpg" alt=""></li>
+              <li><img src="img/instagram/i6.jpg" alt=""></li>
+              <li><img src="img/instagram/i7.jpg" alt=""></li>
+              <li><img src="img/instagram/i8.jpg" alt=""></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h6>Follow Us</h6>
+            <p>Let us be social</p>
+            <div class="footer-social d-flex align-items-center">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-dribbble"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-behance"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+        <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+      </div>
+    </div>
+  </footer>
+  <!--================ End Footer Area =================-->
+
+  
+</body>

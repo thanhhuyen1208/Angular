@@ -1,7 +1,10 @@
+
 export class UserDTO{
 
+    id: number;
     email: string;
     enable: true;
-    id: number;
+    fullName: string;
+    birthday: Date;
     
 }

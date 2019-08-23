@@ -76,7 +76,7 @@ export class BookService {
 
   /** POST: add a new hero to the server */
   addBook(title : string, author: string): Observable<Book>{
-    //  return true
+    
     return this.http.post<Book>(this.booksUrl, {title, author}, this.httpOptions).pipe(
       catchError(this.handleError<Book>('addBook'))
     );
@@ -103,7 +103,4 @@ export class BookService {
       catchError(this.handleError<any>('updateBook'))
     );
   }
-
 }
-
-
