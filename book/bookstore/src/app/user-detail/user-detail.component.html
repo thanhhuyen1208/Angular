@@ -1,0 +1,12 @@
+<div *ngIf="user">
+    <h2>USER DETAIL</h2>
+    <div>
+        <span>Id: </span>{{user.id}}
+        <span>Email: </span>{{user.email}}
+        <span>FullName: </span>{{user.fullName}}
+        <span>Birthday: </span>{{user.birthday}}
+        <span>Role/Roles:</span>{{user.roles}}
+        <span>Enable:</span>{{user.enable}}
+    </div>
+    <button routerLink="/users/edit/{{user.id}}">Edit</button>
+</div>

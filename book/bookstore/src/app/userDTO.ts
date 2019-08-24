@@ -1,3 +1,4 @@
+import { Role } from './role';
 
 export class UserDTO{
 
@@ -6,5 +7,8 @@ export class UserDTO{
     enable: true;
     fullName: string;
     birthday: Date;
+    password: string;
+    roles: Role;
+    comments: Comment
     
 }

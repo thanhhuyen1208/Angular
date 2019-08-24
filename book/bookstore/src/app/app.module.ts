@@ -7,7 +7,7 @@ import { MenuItem } from 'primeng/api';                 //api
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -31,20 +31,24 @@ import { Book } from './book';
 
 // Import your library
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { UsersComponent } from './users/users.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserComponent,
     BookDetailComponent,
     BooksComponent,
     HeaderComponent,
     ConfigComponent,
     MessagesComponent,
     BookEditComponent,
-    CommentsComponent
-
+    CommentsComponent,
+    UsersComponent,
+    UserDetailComponent,
+    UserEditComponent
   ],
 
   imports: [

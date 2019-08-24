@@ -5,7 +5,6 @@ import { Location } from '@angular/common';
 import { Book } from '../book';
 import { CommentService } from '../comment.service';
 import { Comment } from '../comment';
-//import { Comment } from '../comment'
 
 @Component({
   selector: 'app-book-detail',
@@ -45,7 +44,10 @@ export class BookDetailComponent implements OnInit {
   getBook(): void {
     const id = +this.router.snapshot.paramMap.get('id');
     this.bookService.getBook(id).subscribe(book => this.book = book);
-    this.commentService.getComments(id).subscribe(comments => this.comments = comments)
+    this.commentService.getComments(id).subscribe(comments => {
+      console.log(comments);
+      this.comments = comments
+    })
   }
 
   goBack(): void {
