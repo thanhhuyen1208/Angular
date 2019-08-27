@@ -31,7 +31,7 @@
                   <li class="nav-item"><a class="nav-link" href="blog-details.html">Blog Details</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+              <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-social">
               <li><a href="#"><i class="ti ti-facebook"></i></a></li>
@@ -187,7 +187,7 @@
                         </div>
                       </div>
                       <div class="reply-btn">
-                        <a (click)="delete(comment)" class="btn-reply text-uppercase">delete</a>
+                        <button (click)="delete(comment)" class="btn-reply text-uppercase">delete</button>
                       </div>
                     </div>
                   </div>
@@ -199,14 +199,7 @@
               <h4>Leave a Reply</h4>
               <form>
                 <div class="form-group form-inline">
-                  <div class="form-group col-lg-6 col-md-6 name">
-                    <input type="text" class="form-control" id="name" placeholder="Enter Name"
-                      onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-                  </div>
-                  <div class="form-group col-lg-6 col-md-6 email">
-                    <input type="email" class="form-control" id="email" placeholder="Enter email address"
-                      onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-                  </div>
+                  
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" id="subject" placeholder="Subject"
@@ -216,10 +209,9 @@
                   <textarea #commentMessage class="form-control mb-10" rows="5" name="message" placeholder="Messege"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
                 </div>
-                <a class="button submit_btn" (click)="add(commentMessage.value); commentMessage.value='' "
-                  style="color: orange">
+                <button class="button submit_btn" (click)="add(commentMessage.value); commentMessage.value='' ">
                   Post Comment
-                </a>
+                </button>
               </form>
             </div>
           </div>

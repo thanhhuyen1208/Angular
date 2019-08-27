@@ -34,6 +34,18 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { DataViewModule } from 'primeng/dataview';
+import { DropdownModule } from 'primeng/primeng';
+import { PaginatorModule } from 'primeng/primeng';
+import { TreeTableModule } from 'primeng/primeng'; 
+import { PanelModule } from 'primeng/primeng';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +60,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     CommentsComponent,
     UsersComponent,
     UserDetailComponent,
-    UserEditComponent
+    UserEditComponent,
+    NotFoundComponent
   ],
 
   imports: [
@@ -58,7 +71,18 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     AppRoutingModule,
     HttpClientModule,  
     BrowserAnimationsModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    DataViewModule,
+    DropdownModule,
+    PaginatorModule,
+    TreeTableModule,
+    PanelModule,
+    DialogModule,
+    ButtonModule,
+    InputSwitchModule,
+    CalendarModule,
+    TableModule
+    
   ],
   providers: [
     Title,

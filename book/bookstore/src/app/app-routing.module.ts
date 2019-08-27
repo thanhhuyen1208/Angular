@@ -9,10 +9,11 @@ import { BookEditComponent } from './book-edit/book-edit.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
-
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
+  
   { path: 'users', component: UsersComponent},
   { path: 'users/:id', component: UserDetailComponent},
   { path: 'users/edit/:id', component: UserEditComponent},
@@ -20,8 +21,10 @@ const routes: Routes = [
   { path: 'books', component: BooksComponent},
   { path: 'books/:id', component: BookDetailComponent},
   { path: 'books/edit/:id', component: BookEditComponent},
-
-  { path: '', component: BooksComponent}
+  { path: '', component: BooksComponent},
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '404'}
+  
 ];
 
 @NgModule({
