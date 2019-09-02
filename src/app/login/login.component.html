@@ -1,39 +1,42 @@
-<div class="container-loginForm" style="background-image: url('assets/images/bg-02.jpg');">
-    <div class="wrap-loginForm p-l-55 p-r-55 p-t-80 p-b-30">
-        <form  [formGroup]= "loginForm" class="loginForm-form validate-form" (ngSubmit)="onSubmit()" >
-            <span class="loginForm-form-title p-b-37">
-                Login
-            </span>
 
-            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter Email">
-                <input  class="input100" type="text" name="Email" placeholder="Email" formControlName="email" required>
-                <span class="focus-input100"></span>
-            
-                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
-                    <div *ngIf="email.errors.required">
-                        Email is required.
-                    </div>
-                </div>
-            
+<body>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <section class="sign-in">
+      <div class="container">
+        <div class="signin-content">
+          <div class="signin-image">
+            <figure><img src="assets/images/signin-image.jpg" alt="sing up image"></figure>
+            <a href="/register" class="signup-image-link">Create an account</a>
+          </div>
+
+          <div class="signin-form">
+            <h2 class="form-title">Sign in</h2>
+
+            <div class="form-group">
+              <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+              <input type="text" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Your Email" />
             </div>
 
-            <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter Password">
-                <input class="input100" type="password" name="Password" placeholder="Password" formControlName="password" required>
-                <span class="focus-input100"></span>
-                
-                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error">
-                   <div *ngIf="password.errors.required">
-                        Password is required
-                   </div>
-                </div>
-                
+            <div class="form-group">
+              <label for="password"><i class="zmdi zmdi-lock"></i></label>
+              <input type="password" formControlName="password" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" />
             </div>
 
-            <div class="container-loginForm-form-btn">
-                <button class="loginForm-form-btn"  (click)="onSubmit()" type="submit">
-                    Submit
-                </button>
+            <div class="form-group">
+              <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+              <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
             </div>
-        </form>
-    </div>
-</div>
+
+            <div class="form-group ">
+              <button [disabled]="loading" class="form-submit">Login</button>
+              <img *ngIf="loading" class="pl-3"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>
+</body>

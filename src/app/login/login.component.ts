@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   retrunUrl: string;
+  loading: boolean =  false;
+  remember: boolean;
 
   error: {};
   loginError: string;
@@ -36,11 +38,20 @@ export class LoginComponent implements OnInit {
   get email() { return this.loginForm.get('email'); }
   get password() { return this.loginForm.get('password'); }
 
-  get formControls() { return this.loginForm.controls; }
+  get f(){
+    return this.loginForm.controls;
+  }
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    //console.log(this.loginForm.value);
+
     this.submitted = true;
+
+    
+    if(this.loginForm.invalid){
+      return;
+    }
+    this.loading = true;
     this.authService.login(this.email.value, this.password.value).subscribe((data) => {
       if (this.authService.isLoggedIn) {
         const redirect = this.authService.redirectUrl ? this.authService.redirectUrl: '/books';

@@ -1,22 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, BehaviorSubject, Observable } from 'rxjs';
+import { UserDTO } from './userDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  serverUrl = 'https://books-api-456.herokuapp.com/';
+  serverUrl = 'https://books-234.herokuapp.com/api/auth/';
   errorData: {};
+  
+  private currentUserSubject: BehaviorSubject<UserDTO>;
+  public currentUser: Observable<UserDTO>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<UserDTO>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+   }
 
   redirectUrl: string;
 
+  public get currentUserValue(): UserDTO{
+    return this.currentUserSubject.value;
+  }
+
   login(email: string, password: string) {
-    return this.http.post<any>(`${this.serverUrl}api/auth/login`,{email: email,password: password})
+    return this.http.post<any>(`${this.serverUrl}login`,{email: email,password: password})
     .pipe(map(user => {
       if (user && user.token) {
         localStorage.setItem('currentUser', JSON.stringify(user));
@@ -25,7 +36,12 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
-
+  
+    /** CREATE a new user */
+  register(user: UserDTO){
+      return this.http.post(`${this.serverUrl}sign_up`,user);
+  }
+  
   isLoggedIn(){
     if (localStorage.getItem(`currentUser`)) {
       return true;
@@ -37,10 +53,6 @@ export class AuthService {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     return currentUser.token;
   }
-
-  // logout() {
-  //   localStorage.removeItem('currentUser')
-  // }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

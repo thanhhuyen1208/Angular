@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../message.service';
+import {ToastModule} from 'primeng/toast';
 
 @Component({
   selector: 'app-messages',

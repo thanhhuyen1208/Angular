@@ -1,17 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDTO } from '../userDTO';
 import { UserService } from '../user.service';
-import { SelectItem } from 'primeng/api';
+import { SelectItem, MenuItem, DialogService, DynamicDialogRef, DynamicDialogConfig } from 'primeng/api';
 import { DataViewModule } from 'primeng/dataview';
 import { DropdownModule } from 'primeng/primeng';
+import { UserEditComponent } from '../user-edit/user-edit.component';
+//import { MessageService } from '../message.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
+  providers: [DialogService, MessageService]
 })
 export class UsersComponent implements OnInit {
 
+  checked: boolean;
+  visibleSidebar1;
   users: UserDTO[];
   cols: any[];
   selectedUser: UserDTO;
@@ -20,29 +28,40 @@ export class UsersComponent implements OnInit {
   sortKey: string;
   sortField: string;
   sortOrder: number;
-  checked: boolean;
+
+  itemsUser: MenuItem[];
+  itemsBook: MenuItem[];
+  tr: { firstDayOfWeek: number; };
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    public dialogService: DialogService,
+    private route: ActivatedRoute,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
+    this.itemsBook = [{
+      label: 'Books',
+      icon: 'ti ti-book',
+    }],
+
+      this.itemsUser = [{
+        label: 'Users',
+        icon: 'ti ti-user',
+      },
+      ];
+
     this.getUsers();
 
     this.cols = [
       { field: 'id', header: 'ID' },
-      {field: 'email', header: 'Email' },
+      { field: 'email', header: 'Email' },
       { field: 'fullName', header: 'Full Name' },
       { field: 'birthday', header: 'Birthday' },
-      { field: 'role', header:'Role/Roles'}
-  ];
-
-    this.sortOptions = [
-      { label: 'ID', value: 'id' },
-      { label: 'Email', value: 'email' },
-      { label: 'Full Name', value: 'fullName' }
+      { field: 'role', header: 'Role/Roles' },
+      { field: 'enable', header: 'Actived' }
     ];
-
   }
 
   getUsers(): void {
@@ -52,6 +71,7 @@ export class UsersComponent implements OnInit {
   delete(user: UserDTO): void {
     this.users = this.users.filter(u => u !== user);
     this.userService.deleteUser(user).subscribe();
+    this.messageService.clear('c');
   }
 
 
@@ -74,8 +94,20 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  loadData(event){
+  public saveUsername: String;
+
+  public onSaveUsernameChanged(id: String) {
+    this.saveUsername = id;
   }
 
+  showConfirm() {
+    this.messageService.clear();
+    this.messageService.add({key: 'c', sticky: true, severity:'warn', summary:'Are you sure?', detail:'Confirm to proceed'});
+}
+
+onReject() {
+  this.messageService.clear('c');
+}
 
 }
+

@@ -38,12 +38,13 @@ export class UserService {
   }
 
 
+
+
   /**GET users from server */
   getUsers(): Observable<UserDTO[]>{
     return this.http.get<UserDTO[]>(this.userUrl).pipe(
       catchError(this.handleError<UserDTO[]>('getUser'))
     );
-
   }
 
   /** GET user by id from server. Will 404 if id is not found */

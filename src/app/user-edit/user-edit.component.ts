@@ -10,28 +10,25 @@ import { Location } from '@angular/common';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
+  user: UserDTO;
+  minDate: Date;
+  maxDate: Date;
   es: any;
-
-    invalidDates: Array<Date>;
-    minDate: Date;
-
-    maxDate: Date;
-    date11: Date;
-
-
-  @Input()  user: UserDTO
+  invalidDates: Array<Date>
+  date9: Date;
   tr: { firstDayOfWeek: number; };
 
   constructor(
     private userService: UserService,
     private location: Location,
-    private route: ActivatedRoute   
+    private route: ActivatedRoute,
 
-  ) { }
+  ) {}
 
   ngOnInit() {
+
     this.getUser();
-    
+
     this.es = {
       firstDayOfWeek: 1,
       dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
@@ -69,8 +66,13 @@ export class UserEditComponent implements OnInit {
 
   getUser(): void{
     const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUser(id).subscribe(user => this.user = user);
+    this.userService.getUser(id).subscribe(user => {
+      this.user = user
+      this.user.birthday = new Date(user.birthday)
+    });   
   }
+
+  
 
   goBack(): void {
     this.location.back();
@@ -79,9 +81,4 @@ export class UserEditComponent implements OnInit {
   save(): void {
     this.userService.updateUser(this.user).subscribe(() => this.goBack() );
   }
-
-//   handleChange(user) {
-//     let isChecked = user.enable;
-// }
-
 }

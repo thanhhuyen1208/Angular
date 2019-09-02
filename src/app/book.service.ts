@@ -41,10 +41,17 @@ export class BookService {
     }
   }
 
-  /** GET books from server */
-  getBooks(): Observable<ResponseBook> {
+  /** GET responsed books from server */
+  getRespBooks(): Observable<ResponseBook> {
     return this.http.get<ResponseBook>(this.booksUrl).pipe(
       catchError(this.handleError<ResponseBook>('getBooks'))
+    );
+  }
+
+  /** GET books from server */
+  getBooks(): Observable<Book[]>{
+    return this.http.get<Book[]>(`${this.booksUrl}/myBooks`).pipe(
+      catchError(this.handleError<Book[]>('getAllBooks'))
     );
   }
 

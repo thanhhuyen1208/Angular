@@ -42,17 +42,15 @@
                 <div class="ui-g-10 ui-sm-6"><b>{{user.birthday | date:'dd-MM-yyyy'}}</b></div>
 
                 <div class="ui-g-2 ui-sm-6">Role/Roles: </div>
-                <div class="ui-g-10 ui-sm-6">{{user.role}}<b>
-
-                    </b></div>
+                <div class="ui-g-10 ui-sm-6"><b>{{user.role}}</b></div>
 
                 <div class="ui-g-2 ui-sm-6">Enable: </div>
-                <div class="ui-g-10 ui-sm-6"><b>
-                        <label class="switch">
-                            <input type="checkbox" checked=#car.enable disabled>
-                            <span class="slider round"></span>
-                        </label>
-                    </b></div>
+                <div class="ui-g-10 ui-sm-6" ><b>
+                    <div *ngIf="user.enable; then Enable else Disable"></div>
+                    <ng-template #Enable><span class="badge badge-success" >Enable</span></ng-template>
+                    <ng-template #Disable><span class="badge badge-danger" >Disable</span></ng-template>
+                </b></div>
+                    <!-- <ng-template #Failed><span class="badge badge-danger" >Failed</span></ng-template> -->
 
             </div>
         </div>

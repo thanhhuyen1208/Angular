@@ -22,28 +22,27 @@
 
 <nav class="navbar navbar-inverse"></nav>
 
-<p-table [value]="users" [paginator]="true" [rows]="10">
+<p-table [value]="books" [paginator]="true" [rows]="10">
   <ng-template pTemplate="header">
     <tr>
       <th>ID</th>
-      <th>Email</th>
-      <th>Full Name</th>
-      <th>Birthday</th>
-      <th>Role/Roles</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Create At</th>
       <th>Enable</th>
       <th>Action</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-user>
+  <ng-template pTemplate="body" let-book>
     <tr>
-      <td>{{user.id}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.fullName}}</td>
-      <td>{{user.birthday | date:'dd-MM-yyyy'}}</td>
-      <td>{{user.role}}</td>
+      <td>{{book.id}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.createdAt | date:'dd-MM-yyyy'}}</td>
+      
       <td>
 
-        <div *ngIf="user.enabled; else showDisable">
+        <div *ngIf="book.enabled; else showDisable">
           <span class="badge badge-success">Enable</span>
         </div>
         <ng-template #showDisable>
@@ -53,7 +52,7 @@
       </td>
       <td>
         <button pButton type="button" label="Edit" class="ui-button-rounded ui-button-info"
-          routerLink="/users/edit/{{user.id}}" style="margin-right: 1.5em"></button>
+          routerLink="/books/edit/{{book.id}}" style="margin-right: 1.5em"></button>
 
         <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger" (click)="showConfirm()">
           <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
@@ -66,7 +65,7 @@
               </div>
               <div class="ui-g ui-fluid">
                 <div class="ui-g-6">
-                  <button type="button" pButton (click)="delete(user)" label="Yes" class="ui-button-success"></button>
+                  <button type="button" pButton (click)="delete(book)" label="Yes" class="ui-button-success"></button>
                 </div>
                 <div class="ui-g-6">
                   <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
