@@ -1,7 +1,7 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
 import { MenuItem, MessageService } from 'primeng/api';                 //api
 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,7 +39,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { DataViewModule } from 'primeng/dataview';
 import { DropdownModule, MenuModule } from 'primeng/primeng';
 import { PaginatorModule } from 'primeng/primeng';
-import { TreeTableModule } from 'primeng/primeng'; 
+import { TreeTableModule } from 'primeng/primeng';
 import { PanelModule } from 'primeng/primeng';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
@@ -51,6 +51,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
+import { BookAdminEditComponent } from './book-admin-edit/book-admin-edit.component';
 
 
 @NgModule({
@@ -69,7 +70,9 @@ import { ToastModule } from 'primeng/toast';
     UserDetailComponent,
     UserEditComponent,
     NotFoundComponent,
-    BookAdminComponent 
+    BookAdminComponent,
+    BookAdminEditComponent,
+
   ],
 
   imports: [
@@ -77,7 +80,7 @@ import { ToastModule } from 'primeng/toast';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,  
+    HttpClientModule,
     BrowserAnimationsModule,
     SlickCarouselModule,
     DataViewModule,
@@ -95,6 +98,7 @@ import { ToastModule } from 'primeng/toast';
     MenuModule,
     DynamicDialogModule,
     ToastModule,
+  
   ],
   providers: [
     Title,
@@ -102,6 +106,7 @@ import { ToastModule } from 'primeng/toast';
     Comment,
     Book,
     MessageService,
+
 
   ],
   bootstrap: [AppComponent]

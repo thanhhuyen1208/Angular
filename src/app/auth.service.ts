@@ -4,10 +4,12 @@ import { map, catchError } from 'rxjs/operators';
 import { throwError, BehaviorSubject, Observable } from 'rxjs';
 import { UserDTO } from './userDTO';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  
 
   serverUrl = 'https://books-234.herokuapp.com/api/auth/';
   errorData: {};

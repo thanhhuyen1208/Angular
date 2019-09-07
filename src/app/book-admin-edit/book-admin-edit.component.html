@@ -1,0 +1,45 @@
+<div *ngIf="book">
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-g-6 ui-md-4" style="text-align:right">
+        </div>
+      </div>
+    </div>
+  </p-header>
+
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-3" style="text-align:center">
+      <img src="assets/images/book.png">
+    </div>
+    <div class="ui-g-12 ui-md-8 car-details">
+      <div class="ui-g">
+        <div class="ui-g-2 ui-sm-6">ID: </div>
+        <div class="ui-g-10 ui-sm-6"><b>{{book.id}}</b></div>
+
+        <div class="ui-g-2 ui-sm-6">Title: </div>
+        <div class="ui-g-10 ui-sm-6"><b>
+            <input [(ngModel)]="book.title" placeholder="Title" />
+          </b></div>
+
+        <div class="ui-g-2 ui-sm-6">Author: </div>
+        <div class="ui-g-10 ui-sm-6"><b>
+            <input [(ngModel)]="book.author" placeholder="Author" />
+          </b></div>
+        
+          <div class="ui-g-2 ui-sm-6">Create At: </div>
+        <div class="ui-g-10 ui-sm-6"><b>{{book.createdAt |date:'dd-MM-yyyy'}}</b></div>
+
+        <div class="ui-g-2 ui-sm-6">Enable: </div>
+        <div class="ui-g-10 ui-sm-6"><b>
+            <p-inputSwitch [(ngModel)]="book.enabled"></p-inputSwitch>
+          </b></div>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-8 car-details" style="margin-left: 25em;">
+      <button pButton type="button" label="Cancel" class="ui-button-raised ui-button-secondary"
+        (click)="goBack()" style="margin-right: 5em;"></button>
+      <button pButton type="button" label="Save" class="ui-button-raised ui-button-success" (click)="save()"></button>
+    </div>
+  </div>
+</div>

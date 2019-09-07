@@ -1,49 +1,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 
 <body>
   <!--================Header Menu Area =================-->
-  <header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container box_1620">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="index.html"><img src="../favicon.ico" alt=""></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav justify-content-center">
-              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
-              <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog-details.html">Blog Details</a></li>
+  <div *ngIf= "!checkLogin(); else login">
+      <header class="header_area">
+        <div class="main_menu">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container box_1620">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <a class="navbar-brand logo_h" href="index.html"><img src="../favicon.ico" alt=""></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              
+              <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav justify-content-center">
+                  <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+                  <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
+                  <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
                 </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right navbar-social">
-              <li><a href="#"><i class="ti ti-facebook"></i></a></li>
-              <li><a href="#"><i class="ti ti-twitter-alt"></i></a></li>
-              <li><a href="#"><i class="ti ti-instagram"></i></a></li>
-              <li><a href="#"><i class="ti ti-skype"></i></a></li>
-            </ul>
-          </div>
+                
+                <ul class="nav navbar-nav navbar-right navbar-social">
+                  <li><a href="#"><i class="ti ti-facebook"></i></a></li>
+                  <li><a href="#"><i class="ti ti-twitter-alt"></i></a></li>
+                  <li><a href="#"><i class="ti ti-instagram"></i></a></li>
+                  <li><a href="#"><i class="ti ti-skype"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
         </div>
-      </nav>
+      </header>
     </div>
-  </header>
+    
+    <ng-template #login>
+    
+        <header class="header_area">
+            <div class="main_menu">
+              <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container box_1620">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <a class="navbar-brand logo_h" href="index.html"><img src="../favicon.ico" alt=""></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  
+                  <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav justify-content-center">
+                      <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+                      <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
+                      <!-- <li class="nav-item"><a class="nav-link" routerLink="/users">Manager (Only Admin)</a></li> -->
+                      <li class="nav-item submenu dropdown">
+                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Manager (Only Admin)</a>
+                          <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/manage-books">Books</a></li>
+                          </ul>
+                        </li>
+                      <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
+                    </ul>
+                    
+                    <ul class="nav navbar-nav navbar-right navbar-social">
+                      <li><a href="#"><i class="ti ti-facebook"></i></a></li>
+                      <li><a href="#"><i class="ti ti-twitter-alt"></i></a></li>
+                      <li><a href="#"><i class="ti ti-instagram"></i></a></li>
+                      <li><a href="#"><i class="ti ti-skype"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </header>
+    </ng-template>
   <!--================Header Menu Area =================-->
   <main class="site-main"></main>
   <!--================ Hero sm Banner start =================-->
@@ -135,31 +178,14 @@
             <div class="navigation-area">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                  <div class="thumb">
                     <a (click)="goBack()">
-                      <img class="img-fluid" src="assets/images/prev.png" alt=""
-                        style="border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;">
-                    </a>
-                  </div>
-                  <div class="arrow">
-                    <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-                  </div>
-                  <div class="detials">
-                    <h4>Go Back</h4>
-                  </div>
+                        <button pButton type="button" label="Cancel" class="ui-button-rounded ui-button-secondary"></button>
+                      </a>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                  <div class="detials">
-
-                    <h4>Edit</h4>
-                  </div>
-                  <div class="arrow">
-                    <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-                  </div>
-                  <div class="thumb">
-                    <a routerLink="/books/edit/{{book.id}}"><img class="img-fluid" src="assets/images/next.png" alt=""
-                        style="border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%"></a>
-                  </div>
+                    <a routerLink="/books/edit/{{book.id}}">
+                    <button pButton type="button" label="Edit" class="ui-button-rounded ui-button-success"></button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -389,10 +415,6 @@
                   <div style="position: absolute; left: -5000px;">
                     <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
                   </div>
-
-                  <!-- <div class="col-lg-4 col-md-4">
-                        <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                      </div>  -->
                 </div>
                 <div class="info"></div>
               </form>
@@ -439,7 +461,7 @@
         <p class="footer-text m-0">
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           Copyright &copy;
-          <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
+           All rights reserved | This template is made with <i
             class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
         </p>

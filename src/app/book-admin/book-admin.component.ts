@@ -3,6 +3,7 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { BookService } from '../book.service';
 import { Book } from '../book';
 import { ResponseBook } from '../responseBook';
+import { ArrayDataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-book-admin',
@@ -48,5 +49,22 @@ export class BookAdminComponent implements OnInit {
 
   getBooks(): void {
     this.bookService.getBooks().subscribe(books => this.books=books);
+    this.books = this.books.sort((a1,b1) => a1.id-b1.id);
   }
+
+  delete(book: Book): void{
+    this.books = this.books.filter(b => b !== book);
+    this.bookService.deleteBook(book).subscribe();
+    this.messageService.clear('c');
+  }
+
+  showConfirm() {
+    this.messageService.clear();
+    this.messageService.add({key: 'c', sticky: true, severity:'warn', summary:'Are you sure?', detail:'Confirm to proceed'});
+}
+
+onReject() {
+  this.messageService.clear('c');
+}
+
 }

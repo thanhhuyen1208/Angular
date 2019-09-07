@@ -4,6 +4,7 @@ import { BookService } from '../book.service';
 import { Book } from '../book';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-book-edit',
@@ -12,12 +13,13 @@ import { Location } from '@angular/common';
 })
 export class BookEditComponent implements OnInit {
   
-  @Input() book: Book;
+  book: Book;
 
   constructor(
     private bookService: BookService,
     private location: Location,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private authService: AuthService
       ) { }
 
   ngOnInit( ) { 
@@ -36,6 +38,10 @@ export class BookEditComponent implements OnInit {
    save(): void {
      this.bookService.updateBook(this.book).subscribe(() => this.goBack());
    }
+
+   checkLogin():boolean{
+    return this.authService.isLoggedIn();
+  }
 
 
 }

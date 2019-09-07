@@ -1,10 +1,6 @@
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
 <body>
   <!--================Header Menu Area =================-->
+  <div *ngIf= "!checkLogin(); else login">
   <header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -18,6 +14,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- Collect the nav links, forms, and other content for toggling -->
+          
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-center">
               <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
@@ -25,15 +22,8 @@
               <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
               <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
               <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
-              <!-- <li class="nav-item submenu dropdown">
-                <a (click)="logout()" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Logout</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog-details.html">Blog Details</a></li>
-                </ul>
-              </li> -->
-             
             </ul>
+            
             <ul class="nav navbar-nav navbar-right navbar-social">
               <li><a href="#"><i class="ti ti-facebook"></i></a></li>
               <li><a href="#"><i class="ti ti-twitter-alt"></i></a></li>
@@ -45,6 +35,53 @@
       </nav>
     </div>
   </header>
+</div>
+
+<ng-template #login>
+
+    <header class="header_area">
+        <div class="main_menu">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container box_1620">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <a class="navbar-brand logo_h" href="index.html"><img src="../favicon.ico" alt=""></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              
+              <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav justify-content-center">
+                  <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+                  <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
+                  <!-- <li class="nav-item"><a class="nav-link" routerLink="/users">Manager (Only Admin)</a></li> -->
+                  <li class="nav-item submenu dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">Manager (Only Admin)</a>
+                      <ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/manage-books">Books</a></li>
+                      </ul>
+                    </li>
+                  <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right navbar-social">
+                  <li><a href="#"><i class="ti ti-facebook"></i></a></li>
+                  <li><a href="#"><i class="ti ti-twitter-alt"></i></a></li>
+                  <li><a href="#"><i class="ti ti-instagram"></i></a></li>
+                  <li><a href="#"><i class="ti ti-skype"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+</ng-template>
   <!--================Header Menu Area =================-->
 
   <main class="site-main">
@@ -105,13 +142,31 @@
                   <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life style</a>, <a
                       href="#">technology</a>, <a href="#">fashion</a></p>
                   <p>{{book.author}}</p>
+                  
+                  <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+
+                      <ng-template let-message pTemplate="message">
+                        <div style="text-align: center">
+                          <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+                          <h3>{{message.summary}}</h3>
+                          <p>{{message.detail}}</p>
+                        </div>
+                        <div class="ui-g ui-fluid">
+                          <div class="ui-g-6">
+                            <button type="button" pButton (click)="delete(book)" label="Yes" class="ui-button-success"></button>
+                          </div>
+                          <div class="ui-g-6">
+                            <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </p-toast>
+
                   <div>
                     <a class="button" routerLink="/books/{{book.id}}">Read More <i class="ti ti-arrow-right"></i></a>
-                    <a class="button" (click)="delete(book)" style="color:orange">Delete </a>
+                    <a class="button" (click)="showConfirm()" style="color:orange; cursor: pointer">Delete </a>
                   </div>
-                  <!-- <div class="button" (click)="delete(book)">
-                    Delete
-                  </div> -->
+                  
                 </div>
               </ul>
             </div>
@@ -129,6 +184,7 @@
                     </li>
                     <li class="page-item active"><a href="#" class="page-link">1</a></li>
                     <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    
                     <li class="page-item">
                       <a href="#" class="page-link" aria-label="Next">
                         <span aria-hidden="true">

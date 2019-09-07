@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Book } from '../book';
 import { CommentService } from '../comment.service';
 import { Comment } from '../comment';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -34,7 +35,8 @@ export class BookDetailComponent implements OnInit {
     private commentService: CommentService,
     private location: Location,
     private book: Book,
-    private comment: Comment
+    private comment: Comment,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -64,5 +66,9 @@ export class BookDetailComponent implements OnInit {
   delete(comment: Comment): void{
     this.comments = this.comments.filter(c => c!==comment);
     this.commentService.deleteComment(comment).subscribe();
+  }
+
+  checkLogin():boolean{
+    return this.authService.isLoggedIn();
   }
 }

@@ -3,8 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { ResponseBook } from '../responseBook';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { UserDTO } from '../userDTO';
+import { UserService } from '../user.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-books',
@@ -27,11 +30,21 @@ export class BooksComponent implements OnInit {
   
   books: Book[];
   responseBooks: ResponseBook;
+  user: UserDTO;
+  route: ActivatedRoute;
 
-  constructor( private bookService: BookService, private router: Router, private authService: AuthService) { }
+  constructor( 
+    private bookService: BookService, 
+    private router: Router, 
+    private authService: AuthService,
+    private messageService: MessageService,
+    userService: UserService
+    
+    ) { }
 
   ngOnInit() {
     this.getBooks();
+
   }
 
   logout() {
@@ -58,5 +71,18 @@ export class BooksComponent implements OnInit {
     this.books = this.books.filter(b => b !== book);
     this.bookService.deleteBook(book).subscribe();
   }
+
+  checkLogin():boolean{
+    return this.authService.isLoggedIn();
+  }
+
+  showConfirm() {
+    this.messageService.clear();
+    this.messageService.add({key: 'c', sticky: true, severity:'warn', summary:'Are you sure?', detail:'Confirm to proceed'});
+}
+
+onReject() {
+  this.messageService.clear('c');
+}
 
 }

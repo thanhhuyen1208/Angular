@@ -55,7 +55,7 @@
         <button pButton type="button" label="Edit" class="ui-button-rounded ui-button-info"
           routerLink="/users/edit/{{user.id}}" style="margin-right: 1.5em"></button>
 
-        <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger" (click)="showConfirm()">
+        
           <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
 
             <ng-template let-message pTemplate="message">
@@ -73,9 +73,8 @@
                 </div>
               </div>
             </ng-template>
-
           </p-toast>
-        </button>
+          <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger" (click)="showConfirm()"></button>
       </td>
     </tr>
 
