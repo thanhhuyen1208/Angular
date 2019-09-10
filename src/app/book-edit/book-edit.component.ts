@@ -5,6 +5,7 @@ import { Book } from '../book';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-book-edit',
@@ -14,16 +15,20 @@ import { AuthService } from '../auth.service';
 export class BookEditComponent implements OnInit {
   
   book: Book;
+  commentForm: FormGroup;
+  role: string;
 
   constructor(
     private bookService: BookService,
     private location: Location,
     private router: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute
       ) { }
 
   ngOnInit( ) { 
-   this.getBook();
+   this.getBook();  
    }
 
    getBook(): void {
@@ -43,5 +48,12 @@ export class BookEditComponent implements OnInit {
     return this.authService.isLoggedIn();
   }
 
+  logout() {
+    localStorage.removeItem('currentUser');
+  }
+
+  getRole(){
+    this.role = this.authService.getRole();
+  }
 
 }

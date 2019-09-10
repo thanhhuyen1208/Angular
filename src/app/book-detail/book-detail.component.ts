@@ -16,19 +16,21 @@ export class BookDetailComponent implements OnInit {
 
   today = new Date();
 
+  role: string;
+
   slides = [
-    {img: "assets/images/blog-slide1.jpg"},
-    {img: "assets/images/blog-slide2.jpg"},
-    {img: "assets/images/blog-slide3.jpg"},
-    {img: "assets/images/blog-slide4.jpg"},
-    {img: "assets/images/blog-slide5.jpg"},
-    {img: "assets/images/blog-slide6.jpg"}
+    { img: "assets/images/blog-slide1.jpg" },
+    { img: "assets/images/blog-slide2.jpg" },
+    { img: "assets/images/blog-slide3.jpg" },
+    { img: "assets/images/blog-slide4.jpg" },
+    { img: "assets/images/blog-slide5.jpg" },
+    { img: "assets/images/blog-slide6.jpg" }
   ];
-  slideConfig = {"slidesToShow": 3, "slidesToScroll": 4, "autoplay":true, "autoplay-speed": 100};
-  
+  slideConfig = { "slidesToShow": 3, "slidesToScroll": 4, "autoplay": true, "autoplay-speed": 100 };
+
 
   comments: Comment[]
-  
+
   constructor(
     private router: ActivatedRoute,
     private bookService: BookService,
@@ -57,18 +59,26 @@ export class BookDetailComponent implements OnInit {
   }
 
   add(message: string, bookId: number): void {
-     bookId = +this.router.snapshot.paramMap.get('id');
+    bookId = +this.router.snapshot.paramMap.get('id');
     this.commentService.addComment(message, bookId).subscribe(comment => {
       this.comments.push(comment)
     });
   }
 
-  delete(comment: Comment): void{
-    this.comments = this.comments.filter(c => c!==comment);
+  delete(comment: Comment): void {
+    this.comments = this.comments.filter(c => c !== comment);
     this.commentService.deleteComment(comment).subscribe();
   }
 
-  checkLogin():boolean{
+  checkLogin(): boolean {
     return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+  }
+
+  getRole(){
+    this.role = this.authService.getRole();
   }
 }

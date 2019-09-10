@@ -25,7 +25,18 @@
                   <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                   <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
                   <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
-                  <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+                    <li class="nav-item submenu dropdown">
+                        <div *ngIf="role=='ROLE_ADMIN'">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false" style="cursor: pointer;">Manager</a>
+    
+                      <ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/manage-books">Books</a></li>
+                      </ul>
+                    </div>
+                      
+                  </li>
                   <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
                 </ul>
                 
@@ -65,13 +76,24 @@
                       <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
                       <!-- <li class="nav-item"><a class="nav-link" routerLink="/users">Manager (Only Admin)</a></li> -->
                       <li class="nav-item submenu dropdown">
-                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false">Manager (Only Admin)</a>
-                          <ul class="dropdown-menu">
-                            <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/manage-books">Books</a></li>
-                          </ul>
-                        </li>
+                          <div *ngIf="role=='ROLE_ADMIN'; else roleUser">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                          aria-expanded="false">Manager</a>
+      
+                        <ul class="dropdown-menu">
+                          <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/manage-books">Books</a></li>
+                        </ul>
+                      </div>
+                        <ng-template #roleUser>
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">My Books</a>
+      
+                      <ul class="dropdown-menu">
+                        <li class="nav-item"><a class="nav-link" href="/my-books">Books</a></li>
+                      </ul>
+                    </ng-template>
+                    </li>
                       <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
                     </ul>
                     
@@ -198,11 +220,9 @@
                     <div class="single-comment justify-content-between d-flex">
                       <div class="user justify-content-between d-flex">
                         <div class="thumb">
-                            <!-- routerLink="/users/{{comment.user.id}}" -->
                             <a [routerLink]="'/users/'+comment.userDTO.id">
                               <img src="assets/images/c4.jpg" alt="" >
                             </a>
-                            <!-- <img src="assets/images/c4.jpg" alt="" > -->
                         </div>
                         <div class="desc">
 
@@ -228,16 +248,20 @@
                   
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="subject" placeholder="Subject"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                  <textarea #commentMessage class="form-control mb-10" rows="5" name="message" placeholder="MESSAGE"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'MESSAGE'" required="" ></textarea>
                 </div>
-                <div class="form-group">
-                  <textarea #commentMessage class="form-control mb-10" rows="5" name="message" placeholder="Messege"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                <div *ngIf="commentMessage.value==''; else submitEnable">
+                    <button class="button submit_btn" style="opacity: 0.6;"disabled>
+                        Post Comment
+                      </button>
                 </div>
-                <button class="button submit_btn" (click)="add(commentMessage.value); commentMessage.value='' ">
-                  Post Comment
-                </button>
+                <ng-template #submitEnable>
+                    <button class="button submit_btn" (click)="add(commentMessage.value); commentMessage.value='' ">
+                        Post Comment
+                      </button>
+                </ng-template>
+                    
               </form>
             </div>
           </div>

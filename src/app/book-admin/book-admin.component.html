@@ -13,7 +13,6 @@
     <div style="margin-top: 2em"></div>
     <p-tieredMenu [model]="itemsUser" routerLink="/users"></p-tieredMenu>
 
-
   </td>
 
 </p-sidebar>
@@ -22,7 +21,7 @@
 
 <nav class="navbar navbar-inverse"></nav>
 
-<p-table [value]="books" [paginator]="true" [rows]="10">
+<p-table [value]="books" [paginator]="true" [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[5,10,20]">
   <ng-template pTemplate="header">
     <tr>
       <th>ID</th>

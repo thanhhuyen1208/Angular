@@ -56,6 +56,11 @@ export class AuthService {
     return currentUser.token;
   }
 
+  getRole(){
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser.role;
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred: ', error.error.message);

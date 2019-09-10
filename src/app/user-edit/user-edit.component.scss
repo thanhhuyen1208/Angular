@@ -387,7 +387,9 @@ figure {
 .form-group {
   position: relative;
   margin-bottom: 25px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-right: 90px;
+ }
   .form-group:last-child {
     margin-bottom: 0px; }
 
@@ -581,7 +583,7 @@ label.valid {
   background: #e72734; }
 
 .signin-form {
-  margin-right: 90px;
+  // margin-right: 90px;
   margin-left: 80px; }
 
 .signin-image {

@@ -98,9 +98,9 @@ export class LoginComponent implements OnInit {
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
-        //YOUR CODE HERE
 
-
+        // const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/books';
+        // this.router.navigate([redirect]);
       }, (error) => {
         alert(JSON.stringify(error, undefined, 2));
       });

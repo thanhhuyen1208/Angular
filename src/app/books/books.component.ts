@@ -32,6 +32,7 @@ export class BooksComponent implements OnInit {
   responseBooks: ResponseBook;
   user: UserDTO;
   route: ActivatedRoute;
+  role: String;
 
   constructor( 
     private bookService: BookService, 
@@ -44,11 +45,11 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
     this.getBooks();
+    this.getRole();
 
   }
 
-  logout() {
-    
+  logout() {  
       localStorage.removeItem('currentUser');
       this.router.navigate(['/books']);
   }
@@ -85,4 +86,7 @@ onReject() {
   this.messageService.clear('c');
 }
 
+getRole(){
+  this.role = this.authService.getRole();
+}
 }

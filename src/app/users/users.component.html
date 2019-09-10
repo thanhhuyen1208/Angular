@@ -22,7 +22,7 @@
 
 <nav class="navbar navbar-inverse"></nav>
 
-<p-table [value]="users" [paginator]="true" [rows]="10">
+<p-table [value]="users" [paginator]="true" [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[5,10,20]">
   <ng-template pTemplate="header">
     <tr>
       <th>ID</th>

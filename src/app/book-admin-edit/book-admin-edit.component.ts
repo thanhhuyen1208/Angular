@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book.service';
 import { Book } from '../book';
 import { Location } from '@angular/common';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-book-admin-edit',
@@ -12,11 +13,14 @@ import { Location } from '@angular/common';
 export class BookAdminEditComponent implements OnInit {
 
   book: Book;
+  loading: boolean = false;
+  role: string;
 
   constructor(
     private router: ActivatedRoute,
     private bookService: BookService,
-    private location: Location
+    private location: Location,
+    private authService: AuthService
 
   ) { }
 
@@ -35,5 +39,10 @@ export class BookAdminEditComponent implements OnInit {
 
   save(): void {
     this.bookService.updateBook(this.book).subscribe(() => this.goBack() );
+    this.loading  = true;
+  }
+
+  getRole(){
+    this.role = this.authService.getRole();
   }
 }

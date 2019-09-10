@@ -17,6 +17,7 @@ export class UserEditComponent implements OnInit {
   invalidDates: Array<Date>
   date9: Date;
   tr: { firstDayOfWeek: number; };
+  loading: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -80,5 +81,6 @@ export class UserEditComponent implements OnInit {
 
   save(): void {
     this.userService.updateUser(this.user).subscribe(() => this.goBack() );
+    this.loading = true;
   }
 }

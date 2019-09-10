@@ -49,7 +49,7 @@ export class BookAdminComponent implements OnInit {
 
   getBooks(): void {
     this.bookService.getBooks().subscribe(books => this.books=books);
-    this.books = this.books.sort((a1,b1) => a1.id-b1.id);
+
   }
 
   delete(book: Book): void{

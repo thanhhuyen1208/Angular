@@ -1,45 +1,101 @@
-<div *ngIf="book">
-  <p-header>
-    <div class="ui-helper-clearfix">
-      <div class="ui-g">
-        <div class="ui-g-6 ui-md-4" style="text-align:right">
+
+<header class="header_area">
+  <div class="main_menu">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container box_1620">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <a class="navbar-brand logo_h" href="index.html"><img src="../favicon.ico" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+          <ul class="nav navbar-nav menu_nav justify-content-center">
+            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+            <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
+            <li class="nav-item submenu dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false" style="cursor: pointer;">Manager</a>
+
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="/manage-books">Books</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" (click)="logout()" routerLink="/">Logout</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right navbar-social">
+            <li><a href="#"><i class="ti ti-facebook"></i></a></li>
+            <li><a href="#"><i class="ti ti-twitter-alt"></i></a></li>
+            <li><a href="#"><i class="ti ti-instagram"></i></a></li>
+            <li><a href="#"><i class="ti ti-skype"></i></a></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </p-header>
-
-  <div class="ui-g">
-    <div class="ui-g-12 ui-md-3" style="text-align:center">
-      <img src="assets/images/book.png">
-    </div>
-    <div class="ui-g-12 ui-md-8 car-details">
-      <div class="ui-g">
-        <div class="ui-g-2 ui-sm-6">ID: </div>
-        <div class="ui-g-10 ui-sm-6"><b>{{book.id}}</b></div>
-
-        <div class="ui-g-2 ui-sm-6">Title: </div>
-        <div class="ui-g-10 ui-sm-6"><b>
-            <input [(ngModel)]="book.title" placeholder="Title" />
-          </b></div>
-
-        <div class="ui-g-2 ui-sm-6">Author: </div>
-        <div class="ui-g-10 ui-sm-6"><b>
-            <input [(ngModel)]="book.author" placeholder="Author" />
-          </b></div>
-        
-          <div class="ui-g-2 ui-sm-6">Create At: </div>
-        <div class="ui-g-10 ui-sm-6"><b>{{book.createdAt |date:'dd-MM-yyyy'}}</b></div>
-
-        <div class="ui-g-2 ui-sm-6">Enable: </div>
-        <div class="ui-g-10 ui-sm-6"><b>
-            <p-inputSwitch [(ngModel)]="book.enabled"></p-inputSwitch>
-          </b></div>
-      </div>
-    </div>
-    <div class="ui-g-12 ui-md-8 car-details" style="margin-left: 25em;">
-      <button pButton type="button" label="Cancel" class="ui-button-raised ui-button-secondary"
-        (click)="goBack()" style="margin-right: 5em;"></button>
-      <button pButton type="button" label="Save" class="ui-button-raised ui-button-success" (click)="save()"></button>
-    </div>
+    </nav>
   </div>
+</header>
+
+
+<div *ngIf="book">
+
+  <body>
+    <section class="signup">
+      <div class="container">
+        <div class="signup-content">
+          <div class="signup-form">
+
+            <h2 class="form-title">Book Information</h2>
+
+            <div class="form-group">
+              <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>ID:
+              <input type="text" [(ngModel)]="id" placeholder="{{book.id}}" disabled />
+            </div>
+
+            <div class="form-group">
+              <label for="title"><i class="zmdi zmdi-email"></i></label>Title:
+              <input type="title" [(ngModel)]="title" placeholder="{{book.title}}" />
+
+            </div>
+
+            <div class="form-group">
+              <label for="author"><i class="zmdi zmdi-lock"></i></label>Author:
+              <input type="author" [(ngModel)]="title" placeholder="{{book.author}}" />
+
+            </div>
+
+            <div class="form-group">
+              <label for="re_pass"><i class="zmdi zmdi-lock-outline"></i></label>Create At:
+              <div class="ui-g-10 ui-sm-6"><b>{{book.createdAt |date:'dd-MM-yyyy'}}</b></div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="Actived"><i class="zmdi zmdi-lock"></i></label>
+              <p-inputSwitch [(ngModel)]="book.enabled"></p-inputSwitch>
+            </div>
+
+            <div class="form-group ">
+              <button [disabled]="loading" class="form-submit" (click)="save()">Save</button>
+              <img *ngIf="loading" class="pl-3"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+              <button class="form-submit" (click)="goBack()"
+                style="margin-left: 3.2em;background: #c8c8c8;">Cancel</button>
+            </div>
+          </div>
+
+          <div class="signup-image">
+            <figure><img src="assets/images/signup-image.jpg" alt="sing up image"></figure>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </div>
