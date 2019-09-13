@@ -71,9 +71,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate([redirect]);
       } else {
         this.loginError = 'Email or password is incorrect.';
+        const redirect1 = this.authService.redirectUrl ? this.authService.redirectUrl : '/login';
+        this.router.navigate([redirect1]);
       }
     },
-      error => this.error = error
+      error => this.error = error,
     );
   }
 
@@ -99,8 +101,14 @@ export class LoginComponent implements OnInit {
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
 
-        // const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/books';
-        // this.router.navigate([redirect]);
+        this.authService.loginGoogle(googleUser.getAuthResponse().id_token).subscribe((data) => {
+          this.authService.isLoggedIn
+            const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/books';
+            this.router.navigate([redirect]);
+          } ,
+        
+          error => this.error = error,
+        );
       }, (error) => {
         alert(JSON.stringify(error, undefined, 2));
       });

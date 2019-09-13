@@ -38,6 +38,17 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+
+  loginGoogle(token){
+    return this.http.post<any>(`${this.serverUrl}login-google`,token)
+    .pipe(map(user => {
+      if (user && user.token) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      }
+    }),
+      catchError(this.handleError)
+    );
+  }
   
     /** CREATE a new user */
   register(user: UserDTO){
