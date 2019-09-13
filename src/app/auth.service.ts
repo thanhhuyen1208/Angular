@@ -39,7 +39,7 @@ export class AuthService {
     );
   }
 
-  loginGoogle(token){
+  loginGoogle(token:String){
     return this.http.post<any>(`${this.serverUrl}login-google`,token)
     .pipe(map(user => {
       if (user && user.token) {

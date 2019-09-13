@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    private element: ElementRef
+    private element: ElementRef,
   ) {
     console.log('ElementRef: ', this.element);
   }
@@ -80,6 +80,7 @@ export class LoginComponent implements OnInit {
   }
 
   public auth2: any;
+
   public googleInit() {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
@@ -90,6 +91,7 @@ export class LoginComponent implements OnInit {
       this.attachSignin(document.getElementById('googleBtn'));
     });
   }
+
   public attachSignin(element) {
     this.auth2.attachClickHandler(element, {},
       (googleUser) => {
@@ -101,18 +103,16 @@ export class LoginComponent implements OnInit {
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
 
-        this.authService.loginGoogle(googleUser.getAuthResponse().id_token).subscribe((data) => {
-          this.authService.isLoggedIn
-            const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/books';
-            this.router.navigate([redirect]);
-          } ,
-        
-          error => this.error = error,
+        this.authService.loginGoogle(googleUser.getAuthResponse().id_token)
+        .subscribe((data) => {
+          this.router.navigate(['/books']);
+        },
+          error => {this.error = error;
+          this.router.navigate(['/login']);
+          }
         );
-      }, (error) => {
-        alert(JSON.stringify(error, undefined, 2));
       });
-  }
+}
 
   ngAfterViewInit() {
     this.googleInit();

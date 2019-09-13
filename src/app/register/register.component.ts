@@ -64,6 +64,7 @@ export class RegisterComponent implements OnInit {
           error => {
             this.messageService.add('Failed');
             this.loading = false;
+            this.router.navigate(['/register']);
           }
         )
 
