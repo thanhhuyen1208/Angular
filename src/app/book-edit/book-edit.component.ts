@@ -17,6 +17,7 @@ export class BookEditComponent implements OnInit {
   book: Book;
   commentForm: FormGroup;
   role: string;
+  today = new Date();
 
   constructor(
     private bookService: BookService,

@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
 })
 export class BookAdminEditComponent implements OnInit {
 
-  book: Book;
+  public book: Book;
   loading: boolean = false;
   role: string;
 
@@ -44,5 +44,9 @@ export class BookAdminEditComponent implements OnInit {
 
   getRole(){
     this.role = this.authService.getRole();
+  }
+
+  logout(){
+    localStorage.removeItem('currentUser');
   }
 }

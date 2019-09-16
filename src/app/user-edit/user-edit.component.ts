@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
-  user: UserDTO;
+  public user: UserDTO;
   minDate: Date;
   maxDate: Date;
   es: any;
@@ -82,5 +82,9 @@ export class UserEditComponent implements OnInit {
   save(): void {
     this.userService.updateUser(this.user).subscribe(() => this.goBack() );
     this.loading = true;
+  }
+
+  logout(){
+    localStorage.removeItem('currentUser');
   }
 }

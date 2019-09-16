@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book.service';
 import { Location } from '@angular/common';
@@ -30,15 +30,17 @@ export class BookDetailComponent implements OnInit {
 
 
   comments: Comment[]
+  bookId: number;
 
   constructor(
     private router: ActivatedRoute,
     private bookService: BookService,
     private commentService: CommentService,
     private location: Location,
-    private book: Book,
+    public book: Book,
     private comment: Comment,
-    private authService: AuthService
+    private authService: AuthService,
+    @Inject("") bookId: number
   ) { }
 
   ngOnInit() {
@@ -58,9 +60,9 @@ export class BookDetailComponent implements OnInit {
     this.location.back();
   }
 
-  add(message: string, bookId: number): void {
-    bookId = +this.router.snapshot.paramMap.get('id');
-    this.commentService.addComment(message, bookId).subscribe(comment => {
+  add(message: string): void {
+    this.bookId = +this.router.snapshot.paramMap.get('id');
+    this.commentService.addComment(message, this.bookId).subscribe(comment => {
       this.comments.push(comment)
     });
   }

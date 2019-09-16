@@ -3,13 +3,13 @@
         <div class="ui-helper-clearfix">
             <div class="ui-g">
                 <div class="ui-g-12 ui-md-4">
-                    <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By"
-                        (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
+                    <!-- <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By"
+                        (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown> -->
                 </div>
                 <div class="ui-g-6 ui-md-4 filter-container">
                     <div style="position:relative">
-                        <input type="search" pInputText placeholder="Search by full name"
-                            (keyup)="dv.filter($event.target.value)">
+                        <!-- <input type="search" pInputText placeholder="Search by full name"
+                            (keyup)="dv.filter($event.target.value)"> -->
                     </div>
                 </div>
                 <div class="ui-g-6 ui-md-4" style="text-align:right">
@@ -46,7 +46,7 @@
 
                 <div class="ui-g-2 ui-sm-6">Enable: </div>
                 <div class="ui-g-10 ui-sm-6" ><b>
-                    <div *ngIf="user.enable; then Enable else Disable"></div>
+                    <div *ngIf="user.enabled; then Enable else Disable"></div>
                     <ng-template #Enable><span class="badge badge-success" >Enable</span></ng-template>
                     <ng-template #Disable><span class="badge badge-danger" >Disable</span></ng-template>
                 </b></div>

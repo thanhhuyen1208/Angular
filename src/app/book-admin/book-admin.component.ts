@@ -16,7 +16,7 @@ export class BookAdminComponent implements OnInit {
   itemsBook: MenuItem[];
   cols: { field: string; header: string; }[];
 
-  books: Book[];
+ public books: Book[];
 
   constructor(
     private messageService: MessageService,

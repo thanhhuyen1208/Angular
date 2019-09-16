@@ -7,7 +7,7 @@ export class Book{
     author: string;
     createdAt: Date;
     updatedAt: Date;
-    enable: boolean;
+    enabled: boolean;
     userId: number;
     userDTO: UserDTO;
 
