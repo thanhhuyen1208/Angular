@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
 
         this.authService.loginGoogle(googleUser.getAuthResponse().id_token)
         .subscribe((data) => {
-          this.router.navigate(['/books']);
+          //this.router.navigate(['/books']);
         },
           error => {this.error = error;
           this.router.navigate(['/login']);
