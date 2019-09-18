@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.googleInit();
-
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -60,7 +59,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     if (this.loginForm.invalid) {
       return;
     }
@@ -94,7 +92,7 @@ export class LoginComponent implements OnInit {
   }
 
   public attachSignin(element) {
-    this.auth2.attachClickHandler(element, {},
+     this.auth2.attachClickHandler(element, {},
       (googleUser) => {
 
         let profile = googleUser.getBasicProfile();
@@ -113,7 +111,11 @@ export class LoginComponent implements OnInit {
           }
         );
       });
-}
+  }
+
+  loginGoogle(){
+    console.log("2");
+  }
 
   ngAfterViewInit() {
     this.googleInit();
