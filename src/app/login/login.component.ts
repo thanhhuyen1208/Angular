@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { FormBuilder, Validator, FormGroup, Validators } from '@angular/forms';
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private element: ElementRef,
+    private ngZone: NgZone
   ) {
     console.log('ElementRef: ', this.element);
   }
@@ -70,11 +71,16 @@ export class LoginComponent implements OnInit {
         this.router.navigate([redirect]);
       } else {
         this.loginError = 'Email or password is incorrect.';
-        const redirect1 = this.authService.redirectUrl ? this.authService.redirectUrl : '/login';
-        this.router.navigate([redirect1]);
+        // const redirect1 = this.authService.redirectUrl ? this.authService.redirectUrl : '/login';
+       
       }
     },
-      error => this.error = error,
+      error => {
+        this.error = error;
+        location.reload();
+
+      }
+         
     );
   }
 
@@ -104,19 +110,16 @@ export class LoginComponent implements OnInit {
 
         this.authService.loginGoogle(googleUser.getAuthResponse().id_token)
         .subscribe((data) => {
-          this.router.navigate(['/books']);
-          window.location.reload();
+         
+          this.ngZone.run(() =>  this.router.navigate(['/books'])).then();
         },
           error => {this.error = error;
-          this.router.navigate(['/login']);
+            this.ngZone.run(() => this.router.navigate(['/login'])).then();
           }
         );
       });
   }
 
-  loginGoogle(){
-    console.log("2");
-  }
 
   ngAfterViewInit() {
     this.googleInit();

@@ -29,7 +29,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { Comment } from './comment';
 import { Book } from './book';
 import { RegisterComponent } from './register/register.component';
-import { BookAdminComponent } from './book-admin/book-admin.component'
+import { BookAdminComponent } from './book-admin/book-admin.component';
 
 // Import your library
 import { SlickCarouselModule } from 'ngx-slick-carousel';
