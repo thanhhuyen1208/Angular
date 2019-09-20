@@ -52,6 +52,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
 import { BookAdminEditComponent } from './book-admin-edit/book-admin-edit.component';
+import { CommentService } from './comment.service';
 
 
 @NgModule({
@@ -76,11 +77,11 @@ import { BookAdminEditComponent } from './book-admin-edit/book-admin-edit.compon
   ],
 
   imports: [
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     SlickCarouselModule,
     DataViewModule,
@@ -101,13 +102,11 @@ import { BookAdminEditComponent } from './book-admin-edit/book-admin-edit.compon
   
   ],
   providers: [
-    Title,
     httpInterceptorProviders,
     Comment,
     Book,
     MessageService,
-
-
+    CommentService
   ],
   bootstrap: [AppComponent]
 })

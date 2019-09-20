@@ -40,7 +40,6 @@ export class BookDetailComponent implements OnInit {
     public book: Book,
     private comment: Comment,
     private authService: AuthService,
-    @Inject("") bookId: number
   ) { }
 
   ngOnInit() {
