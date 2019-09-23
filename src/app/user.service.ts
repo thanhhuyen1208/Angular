@@ -72,7 +72,8 @@ export class UserService {
 
   /** DELETE: delete the user from the server */
   deleteUser(user: UserDTO | number): Observable<UserDTO>{
-    const id = typeof user === 'number' ? user: user.id;
+     const id = typeof user === 'number' ? user: user.id;
+
     const url = `${this.userUrl}/${id}`;
 
     return this.http.delete<UserDTO>(url, this.httpOptions).pipe(

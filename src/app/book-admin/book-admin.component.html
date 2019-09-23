@@ -7,7 +7,7 @@
 </nav>
 
 <!-- <p-sidebar [(visible)]="display"> -->
-  <p-sidebar>
+  <p-sidebar [(visible)]="display">
   <h1 style="font-weight:normal">Menu</h1>
   <td>
     <p-tieredMenu [model]="itemsBook" routerLink="/manage-books"></p-tieredMenu>
@@ -19,7 +19,7 @@
 </p-sidebar>
 
 <!-- <button type="text" (click)="display = true" pButton icon="ti ti-view-list-alt"></button> -->
-<button type="text"  pButton icon="ti ti-view-list-alt"></button>
+<button type="text" (click)="display = true" pButton icon="ti ti-view-list-alt"></button>
 
 <nav class="navbar navbar-inverse"></nav>
 

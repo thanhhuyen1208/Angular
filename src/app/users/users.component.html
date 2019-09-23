@@ -7,7 +7,7 @@
 </nav>
 
 <!-- <p-sidebar [(visible)]="display"> -->
-    <p-sidebar>
+    <p-sidebar [(visible)]="display">
   <h1 style="font-weight:normal">Menu</h1>
   <td>
     <p-tieredMenu [model]="itemsBook" routerLink="/manage-books"></p-tieredMenu>
@@ -20,7 +20,7 @@
 </p-sidebar>
 
 <!-- <button type="text" (click)="display = true" pButton icon="ti ti-view-list-alt"></button> -->
-<button type="text" pButton icon="ti ti-view-list-alt"></button>
+<button type="text" (click)="display = true" pButton icon="ti ti-view-list-alt"></button>
 <nav class="navbar navbar-inverse"></nav>
 
 <p-table [value]="users" [paginator]="true" [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[5,10,20]">
@@ -73,9 +73,11 @@
                   <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
                 </div>
               </div>
+              
             </ng-template>
+            
           </p-toast>
-          <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger" (click)="showConfirm()"></button>
+        <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger" (click)="showConfirm()"></button> 
       </td>
     </tr>
 
