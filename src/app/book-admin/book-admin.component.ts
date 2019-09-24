@@ -48,7 +48,8 @@ export class BookAdminComponent implements OnInit {
   }
 
   getBooks(): void {
-    this.bookService.getBooks().subscribe(books => this.books=books);
+    // this.bookService.getBooks().subscribe(books => this.books=books);
+    this.bookService.getRespBooks().subscribe(responseBooks => this.books=responseBooks.books);
 
   }
 

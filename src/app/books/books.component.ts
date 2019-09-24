@@ -39,7 +39,7 @@ export class BooksComponent implements OnInit {
     private router: Router, 
     private authService: AuthService,
     private messageService: MessageService,
-    userService: UserService
+    private userService: UserService
     
     ) { }
 
