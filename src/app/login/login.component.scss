@@ -296,6 +296,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-size: 14px;
     color: #222;
     display: block;
+    text-decoration: underline;
     text-align: center; }
   
   .term-service {
@@ -585,6 +586,31 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     .social-label {
       margin-right: 0px;
       margin-bottom: 10px; } }
-  
+
+    .header_area .navbar {
+       background: #f8f8f8;
+    }
+    
+    .navbar-light .navbar-toggler {
+      color: rgba(0,0,0,.5);
+      border-color: rgba(0,0,0,.1);
+  }
+
+  .navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: #fff;}
+
+    .navbar-toggler span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: auto;
+      margin-bottom: 4px;
+      transition: all 400ms linear;
+      cursor: pointer;
+    }
   /*# sourceMappingURL=style.css.map */
   
