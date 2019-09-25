@@ -7,7 +7,7 @@
 </nav>
 
 <!-- <p-sidebar [(visible)]="display"> -->
-  <p-sidebar [(visible)]="display">
+<p-sidebar [(visible)]="display">
   <h1 style="font-weight:normal">Menu</h1>
   <td>
     <p-tieredMenu [model]="itemsBook" routerLink="/manage-books"></p-tieredMenu>
@@ -40,7 +40,7 @@
       <td>{{book.title}}</td>
       <td>{{book.author}}</td>
       <td>{{book.createdAt | date:'dd-MM-yyyy'}}</td>
-      
+
       <td>
 
         <div *ngIf="book.enabled; else showDisable">
@@ -54,25 +54,27 @@
       <td>
         <button pButton type="button" label="Edit" class="ui-button-rounded ui-button-info"
           routerLink="/book-manange/edit/{{book.id}}" style="margin-right: 1.5em"></button>
-   
-          <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
-            <ng-template let-message pTemplate="message">
-              <div style="text-align: center">
-                <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
-                <h3>{{message.summary}}</h3>
-                <p>{{message.detail}}</p>
+
+        <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+          <ng-template let-message pTemplate="message">
+            <div style="text-align: center">
+              <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+              <h3>{{message.summary}}</h3>
+              <p>{{message.detail}}</p>
+            </div>
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-6">
+                <button type="button" pButton (click)="delete(currentModalBook)" label="Yes"
+                  class="ui-button-success"></button>
               </div>
-              <div class="ui-g ui-fluid">
-                <div class="ui-g-6">
-                  <button type="button" pButton (click)="delete(currentModalBook)" label="Yes" class="ui-button-success"></button>
-                </div>
-                <div class="ui-g-6">
-                  <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
-                </div>
+              <div class="ui-g-6">
+                <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
               </div>
-            </ng-template>
-          </p-toast>
-         <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger" (click)="showConfirm()">
+            </div>
+          </ng-template>
+        </p-toast>
+        <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger"
+          (click)="showConfirm(book)">
         </button>
       </td>
     </tr>

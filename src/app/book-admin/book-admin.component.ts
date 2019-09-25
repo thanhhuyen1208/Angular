@@ -18,7 +18,7 @@ export class BookAdminComponent implements OnInit {
   currentModalBook: Book;
   cols: { field: string; header: string; }[];
 
- public books: Book[];
+  public books: Book[];
 
   constructor(
     private messageService: MessageService,
@@ -45,15 +45,15 @@ export class BookAdminComponent implements OnInit {
       { field: 'title', header: 'Title' },
       { field: 'author', header: 'Author' },
       { field: 'createdAt', header: 'Create At' },
-      { field: 'enable', header: 'Actived'},
+      { field: 'enable', header: 'Actived' },
     ];
   }
 
   getBooks(): void {
-    this.bookService.getRespBooks().subscribe(responseBooks => this.books=responseBooks.books);
+    this.bookService.getRespBooks().subscribe(responseBooks => this.books = responseBooks.books);
   }
 
-  delete(book: Book): void{
+  delete(book: Book): void {
     this.books = this.books.filter(b => b !== book);
     this.bookService.deleteBook(book).subscribe();
     this.messageService.clear('c');
@@ -62,11 +62,11 @@ export class BookAdminComponent implements OnInit {
   showConfirm(book: Book) {
     this.currentModalBook = book;
     this.messageService.clear();
-    this.messageService.add({key: 'c', sticky: true, severity:'warn', summary:'Are you sure?', detail:'Confirm to proceed'});
-}
+    this.messageService.add({ key: 'c', sticky: true, severity: 'warn', summary: 'Are you sure?', detail: 'Confirm to proceed' });
+  }
 
-onReject() {
-  this.messageService.clear('c');
-}
+  onReject() {
+    this.messageService.clear('c');
+  }
 
 }
