@@ -283,7 +283,7 @@
         margin-top:27px;
         margin-bottom:23px
     }
-    .header_area .navbar{background:#000}
+    .header_area .navbar{background:#fff}
     .navbar-toggler[aria-expanded="false"] span:nth-child(2){opacity:1}
     .navbar-toggler[aria-expanded="true"] span:nth-child(2){opacity:0}
     .navbar-toggler[aria-expanded="true"] span:first-child{
@@ -298,7 +298,7 @@
         display:block;
         width:25px;
         height:3px;
-        background:#fff;
+        background:#000;
         margin:auto;
         margin-bottom:4px;
         transition:all 400ms linear;
