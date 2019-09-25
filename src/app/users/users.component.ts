@@ -5,7 +5,6 @@ import { SelectItem, MenuItem, DialogService, DynamicDialogRef, DynamicDialogCon
 import { DataViewModule } from 'primeng/dataview';
 import { DropdownModule } from 'primeng/primeng';
 import { UserEditComponent } from '../user-edit/user-edit.component';
-//import { MessageService } from '../message.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import {MessageService} from 'primeng/api';
@@ -22,15 +21,17 @@ export class UsersComponent implements OnInit {
   visibleSidebar1;
   users: UserDTO[];
   cols: any[];
+  display: any;
   selectedUser: UserDTO;
   displayDialog: boolean;
   sortOptions: SelectItem[];
   sortKey: string;
   sortField: string;
   sortOrder: number;
-
   itemsUser: MenuItem[];
   itemsBook: MenuItem[];
+
+  currentModalUserId: UserDTO;
   tr: { firstDayOfWeek: number; };
 
   constructor(
@@ -100,7 +101,8 @@ export class UsersComponent implements OnInit {
     this.saveUsername = id;
   }
 
-  showConfirm() {
+  showConfirm(userId: UserDTO) {
+    this.currentModalUserId = userId;
     this.messageService.clear();
     this.messageService.add({key: 'c', sticky: true, severity:'warn', summary:'Are you sure?', detail:'Confirm to proceed'});
 }

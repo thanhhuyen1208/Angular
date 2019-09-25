@@ -55,7 +55,7 @@
       <td>
         <button pButton type="button" label="Edit" class="ui-button-rounded ui-button-info"
           routerLink="/users/edit/{{user.id}}" style="margin-right: 1.5em"></button>
-          <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger" (click)="showConfirm()"></button> 
+          <button pButton type="button" label="Delete" class="ui-button-rounded ui-button-danger" (click)="showConfirm(user)"></button> 
          
           <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
             
@@ -68,9 +68,9 @@
               </div>
               <div class="ui-g ui-fluid">
                 <div class="ui-g-6">
-                  <button type="button" pButton (click)="delete(user)" label="Yes" class="ui-button-success"></button>
+                  <button type="button" pButton (click)="delete(currentModalUserId)" label="Yes" class="ui-button-success"></button>
                 </div>
-                <span>{{user.id}}</span>
+                <span>{{currentModalUserId.id}}</span>
                 <div class="ui-g-6">
                   <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
                 </div>

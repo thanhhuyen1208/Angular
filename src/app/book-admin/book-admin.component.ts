@@ -14,6 +14,8 @@ export class BookAdminComponent implements OnInit {
 
   itemsUser: MenuItem[];
   itemsBook: MenuItem[];
+  display: any;
+  currentModalBook: Book;
   cols: { field: string; header: string; }[];
 
  public books: Book[];
@@ -48,9 +50,7 @@ export class BookAdminComponent implements OnInit {
   }
 
   getBooks(): void {
-    // this.bookService.getBooks().subscribe(books => this.books=books);
     this.bookService.getRespBooks().subscribe(responseBooks => this.books=responseBooks.books);
-
   }
 
   delete(book: Book): void{
@@ -59,7 +59,8 @@ export class BookAdminComponent implements OnInit {
     this.messageService.clear('c');
   }
 
-  showConfirm() {
+  showConfirm(book: Book) {
+    this.currentModalBook = book;
     this.messageService.clear();
     this.messageService.add({key: 'c', sticky: true, severity:'warn', summary:'Are you sure?', detail:'Confirm to proceed'});
 }
