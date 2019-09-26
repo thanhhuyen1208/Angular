@@ -12,13 +12,12 @@ export class NotFoundComponent implements OnInit {
   today = new Date();
 
   role: String;
-  
+
   constructor(
 
-    private authService: AuthService
-  ) { 
-
-  }
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     
@@ -30,5 +29,10 @@ export class NotFoundComponent implements OnInit {
   getRole(){
     this.role = this.authService.getRole();
   }
+
+  logout() {  
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/books']);
+}
 
 }
