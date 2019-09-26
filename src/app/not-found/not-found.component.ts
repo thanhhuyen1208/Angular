@@ -11,10 +11,11 @@ export class NotFoundComponent implements OnInit {
 
   today = new Date();
 
+  role: String;
+  
   constructor(
 
-    private authService: AuthService,
-    private role: Router
+    private authService: AuthService
   ) { 
 
   }
