@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-not-found',
@@ -9,10 +11,23 @@ export class NotFoundComponent implements OnInit {
 
   today = new Date();
 
-  constructor() { }
+  constructor(
+
+    private authService: AuthService,
+    private role: Router
+  ) { 
+
+  }
 
   ngOnInit() {
     
+  }
+  checkLogin():boolean{
+    return this.authService.isLoggedIn();
+  }
+
+  getRole(){
+    this.role = this.authService.getRole();
   }
 
 }

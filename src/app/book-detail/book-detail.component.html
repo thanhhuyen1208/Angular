@@ -23,8 +23,6 @@
               <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                 <ul class="nav navbar-nav menu_nav justify-content-center">
                   <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
-                  <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
                     <li class="nav-item submenu dropdown">
                         <div *ngIf="role=='ROLE_ADMIN'">
                       <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -71,12 +69,9 @@
                   
                   <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav justify-content-center">
-                      <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                      <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
-                      <li class="nav-item"><a class="nav-link" href="category.html">Category</a>
-                      <!-- <li class="nav-item"><a class="nav-link" routerLink="/users">Manager (Only Admin)</a></li> -->
-                      <div *ngIf="role=='ROLE_ADMIN'">
+                      <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>        
                       <li class="nav-item submenu dropdown">
+                          <div *ngIf="role=='ROLE_ADMIN'">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                           aria-expanded="false">Manager</a>
       
@@ -457,18 +452,18 @@
             <h6>Follow Us</h6>
             <p>Let us be social</p>
             <div class="footer-social d-flex align-items-center">
-              <a href="#">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i class="fab fa-dribbble"></i>
-              </a>
-              <a href="#">
-                <i class="fab fa-behance"></i>
-              </a>
+                <a href="https://www.facebook.com/">
+                  <i class="fa fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a href="https://dribbble.com/">
+                  <i class="fa fa-dribbble"></i>
+                </a>
+                <a href="https://www.behance.net/">
+                  <i class="fa fa-behance"></i>
+                </a>
             </div>
           </div>
         </div>
