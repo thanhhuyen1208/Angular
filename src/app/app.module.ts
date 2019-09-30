@@ -53,6 +53,8 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
 import { BookAdminEditComponent } from './book-admin-edit/book-admin-edit.component';
 import { CommentService } from './comment.service';
+import { EditorModule } from 'primeng/editor';
+
 
 
 @NgModule({
@@ -99,7 +101,7 @@ import { CommentService } from './comment.service';
     MenuModule,
     DynamicDialogModule,
     ToastModule,
-  
+    EditorModule
   ],
   providers: [
     httpInterceptorProviders,

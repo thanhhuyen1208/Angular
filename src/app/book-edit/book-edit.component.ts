@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-book-edit',
   templateUrl: './book-edit.component.html',
@@ -17,7 +18,6 @@ export class BookEditComponent implements OnInit {
   book: Book;
   commentForm: FormGroup;
   role: string;
-  today = new Date();
 
   constructor(
     private bookService: BookService,
@@ -30,6 +30,7 @@ export class BookEditComponent implements OnInit {
 
   ngOnInit( ) { 
    this.getBook();  
+   this.getRole();
    }
 
    getBook(): void {

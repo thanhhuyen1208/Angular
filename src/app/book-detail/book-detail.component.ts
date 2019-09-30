@@ -44,6 +44,7 @@ export class BookDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getBook();
+    this.getRole();
   }
 
   getBook(): void {

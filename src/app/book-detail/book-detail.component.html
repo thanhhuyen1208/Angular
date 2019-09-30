@@ -58,15 +58,14 @@
               <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container box_1620">
                   <!-- Brand and toggle get grouped for better mobile display -->
-                  <a class="navbar-brand logo_h" href="index.html"><img src="../favicon.ico" alt=""></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <!-- Collect the nav links, forms, and other content for toggling -->
                   
+                  <!-- Collect the nav links, forms, and other content for toggling --> 
                   <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav justify-content-center">
                       <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>        
@@ -110,24 +109,6 @@
       </div>
     </div>
   </section>
-  <!--================ Hero sm Banner end =================-->
-  <section>
-    <div class="container">
-
-      <div class="owl-carousel owl-theme blog-slider">
-        <a class="blog__slide__label" href="#">Hot Books </a>
-        <div class="card blog__slide text-center">
-          <ngx-slick-carousel class="carousel" [config]="slideConfig">
-
-            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-              <img src="{{ slide.img }}" alt="" width="100%" height="500px">
-            </div>
-          </ngx-slick-carousel>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!--================ Start Blog Post Area =================-->
   <section class="blog-post-area section-margin">
     <div *ngIf="book">
@@ -155,25 +136,7 @@
                   </div>
                 </div>
               </div>
-              <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should
-                have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the
-                camp price. However, who has the willpower</p>
-              <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should
-                have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the
-                camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has
-                the willpower to actually sit through a self-imposed MCSE training.</p>
-              <blockquote class="blockquote">
-                <p class="mb-0">MCSE boot camps have its supporters and its detractors. Some people do not understand
-                  why you should have to spend money on boot camp when you can get the MCSE study materials yourself at
-                  a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed
-                  MCSE training.</p>
-              </blockquote>
-              <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should
-                have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the
-                camp price. However, who has the willpower</p>
-              <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should
-                have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the
-                camp price. However, who has the willpower</p>
+              <p [innerHTML]="book.content"></p>
               <div class="news_d_footer flex-column flex-sm-row">
                 <span class="align-middle mr-2"><i class="ti ti-heart" style="color: red"></i></span>Become the first
                 person to like thiss
@@ -467,15 +430,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-        <p class="footer-text m-0">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;
-           All rights reserved | This template is made with <i
-            class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
       </div>
     </div>
   </footer>

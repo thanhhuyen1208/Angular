@@ -36,7 +36,9 @@
               "./node_modules/primeng/resources/themes/nova-light/theme.css",
               "./node_modules/primeng/resources/primeng.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/themify-icons/themify-icons/_icons.scss"
+              "./node_modules/themify-icons/themify-icons/_icons.scss",
+              "./node_modules/quill/dist/quill.core.css", 
+              "./node_modules/quill/dist/quill.snow.css"
               
             ],
             "scripts": [
@@ -44,8 +46,9 @@
               "node_modules/slick-carousel/slick/slick.min.js",
               "node_modules/chart.js/dist/Chart.js",
               "node_modules/quill/dist/quill.js",
-              "./node_modules/popper.js/dist/popper.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js"
+              "node_modules/popper.js/dist/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/quill/dist/quill.js"
             ]
           },
           "configurations": {
