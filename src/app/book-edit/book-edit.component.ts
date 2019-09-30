@@ -14,6 +14,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./book-edit.component.scss']
 })
 export class BookEditComponent implements OnInit {
+
+  today = new Date();
   
   book: Book;
   commentForm: FormGroup;
